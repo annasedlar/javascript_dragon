@@ -15,11 +15,20 @@
 			
 		}
 
+		#photos{
+			max-height:  100px;
+			display: inline-block;
+			text-align: center;
+
+		}
+
 		#actions{
 			display: block;
 			margin: auto;
-			width: 400px;
-			text-align: center;}
+			height: 200px;
+			text-align: center;
+		}
+
 
 		#partTwo{
 			background-color: antiquewhite;
@@ -41,7 +50,9 @@
 			<h1>You encountered a dragon!</h1>
 			<h2>Do you fight?</h2>
 			<h4>Click on the dragon to fight.</h4>
-			<input type="image" src="cute-dragon.jpg" name="cuteDragon" id="cuteDragon" onclick= "transform();"/>
+			<div id="photos">
+				<input type="image" src="cute-dragon.jpg" name="cuteDragon" id="cuteDragon" height="300px" onclick= "transform();"/><img src="hero.jpeg";>
+			</div>
 		</div>
 
 		<div id="partTwo">
