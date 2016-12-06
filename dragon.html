@@ -19,6 +19,7 @@
 			max-height:  100px;
 			display: inline-block;
 			text-align: center;
+			vertical-align: center;
 
 		}
 
@@ -38,6 +39,21 @@
 			text-align: center;
 			border:  5px solid black;
 		}
+
+			#button {
+			    background-color: #f44336;
+			    border: 1px solid darkred;
+			    color: white;
+			    padding: 15px 32px;
+			    text-align: center;
+			    text-decoration: none;
+			    display: inline-block;
+			    font-size: 16px;
+			}
+		#userRoll{
+			font-family: century-gothic;
+			font-size: 52px;
+		}
 		
 	</style>
 </head>
@@ -49,18 +65,19 @@
 		<div id="heading">
 			<h1>You encountered a dragon!</h1>
 			<h2>Do you fight?</h2>
-			<h4>Click on the dragon to fight.</h4>
+			<h4>Click on the cute little dragon to fight.</h4>
+			<h6>Otherwise click <a href="coward.jpg" id="coward" name="coward" onclick="toCoward();"> here</a> to flee like a coward..</h6>
 			<div id="photos">
-				<input type="image" src="cute-dragon.jpg" name="cuteDragon" id="cuteDragon" height="300px" onclick= "transform();"/><img src="hero.jpeg";>
+				<input type="image" src="cute-dragon.jpg" name="cuteDragon" id="cuteDragon" height="300px" onclick= "transform();"/><img name="hero" src="hero.jpeg";>
 			</div>
 		</div>
 
 		<div id="partTwo">
 			<div id="actions">
-				<h2>Roll the die - if you roll a total greater than 8, you win!</h2>
+				<h2>Then, roll the die! If you roll a total of 9 or greater, you are burnt toast!!</h2>
 				<img name="die1" src="d1.gif">
 				<img name="die2" src="d2.gif"><BR>
-				<input type="button" onclick="rollDice();" value="Roll the dice!">
+				<input type="button" id="button" onclick="rollDice();" value="Roll the dice!">
 			</div>
 
 			<div id="userRoll">
@@ -79,9 +96,13 @@
 			document.getElementById("cuteDragon").src="evil-dragon.jpeg";
 			document.body.style.backgroundImage = 'url(hell.jpg)';
 		};
+		function toCoward(){
+			document.getElementById('coward').src="coward.jpg";
+		};
+
+
 
 		function rollDice(){
-			// console.log("test");
 			var randomDie1 = Math.ceil(Math.random() * 6);
 			var randomDie2 = Math.ceil(Math.random() * 6);
 
@@ -93,14 +114,15 @@
 			document.images.die2.src="d" + randomDie2 +".gif"; 
 
 
-
-
-			document.getElementById('userRoll').innerHTML = randomDie1 + randomDie2; 
-
+			if(randomDie1 + randomDie2 >8){
+				document.getElementById('userRoll').innerHTML= randomDie1 + randomDie2 + "<BR>Ouch, that looks painful, the dragon beat you!"
+					}else
+						{document.getElementById('userRoll').innerHTML= randomDie1 + randomDie2 +"<BR>You're still alive! Keep on rollin'!"}
 
 			if(randomDie2+randomDie1 > 8){
-				document.images.dragon.src= "burnt-toast-2.jpg"
-				}else{ document.images.hero.src="hero.png"};
+				// document.images.dragon.src= "burnt-toast-2.jpg"
+				// }else{ 
+					document.images.hero.src="burnt-toast-2.jpg"};
 
 		}
 
